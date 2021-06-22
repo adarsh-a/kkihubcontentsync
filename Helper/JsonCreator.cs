@@ -63,5 +63,33 @@ namespace KKIHub.ContentSync.Web.Helper
 
             return true;
         }
+
+        private static void CheckFiles()
+        {
+            var path = AppDomain.CurrentDomain.BaseDirectory;
+            Console.WriteLine($"Path is {path}");
+            var filePath = Path.Combine(path, "gulpfile.js");
+
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine("Gulpfile found");
+            }
+            else
+            {
+                Console.WriteLine("Gulpfile not found");
+
+            }
+
+            var filePath2 = Path.Combine(path, "package.json");
+            if (!File.Exists(filePath2))
+            {
+                Console.WriteLine("Package.json found");
+            }
+            else
+            {
+                Console.WriteLine("Package.json not found");
+
+            }
+        }
     }
 }

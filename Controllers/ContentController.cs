@@ -291,6 +291,7 @@ namespace KKIHub.ContentSync.Web.Controllers
         }
 
 
+
         private void DeleteUnnecessaryItems(List<ContentDetails> contents, string syncId)
         {
             var contentList = JsonCreator.ListContent(syncId, "content");

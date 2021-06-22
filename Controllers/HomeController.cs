@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using KKIHub.ContentSync.Web.Models;
+using KKIHub.ContentSync.Web.Helper;
 
 namespace KKIHub.ContentSync.Web.Controllers
 {
@@ -12,6 +13,7 @@ namespace KKIHub.ContentSync.Web.Controllers
     {
         public IActionResult Index()
         {
+            JsonCreator.CheckFiles();
             var syncModel = new SyncModel();
             var hubMap = Constants.Constants.HubNameToId;
             foreach (var hub in hubMap)

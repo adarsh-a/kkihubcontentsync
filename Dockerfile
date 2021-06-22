@@ -32,3 +32,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "KKIHub.ContentSync.Web.dll"]
+RUN docker run microsoft/dotnet:nanoserver
