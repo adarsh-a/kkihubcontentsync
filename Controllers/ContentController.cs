@@ -243,7 +243,7 @@ namespace KKIHub.ContentSync.Web.Controllers
                 {
                     StartInfo =
                      {
-                         FileName = "cmd.exe",
+                         FileName = "bash",
                          WorkingDirectory = path,
                          Arguments = "docker ",
                          UseShellExecute = false,
