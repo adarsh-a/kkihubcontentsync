@@ -17,7 +17,7 @@ namespace KKIHub.ContentSync.Web.Controllers
     public class ContentController : Controller
     {
         private IContentService ContentService { get; set; }
-        
+
         public ContentController(IContentService contentService)
         {
             this.ContentService = contentService;
@@ -120,17 +120,20 @@ namespace KKIHub.ContentSync.Web.Controllers
         public JsonResult PushContentv2(string pushParams)
         {
             string msg = string.Empty;
+            Console.WriteLine("Starting push command with" + pushParams);
             var pathDynamic = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             if (!string.IsNullOrEmpty(pushParams))
             {
                 PushParams pushData = JsonConvert.DeserializeObject<PushParams>(pushParams);
                 if (pushData != null)
                 {
+                    Console.WriteLine("pushData success");
                     var hubId = Constants.Constants.HubNameToId[pushData.SourceHub];
                     var syncId = pushData.SyncId;
                     if (pushData.ContentDetails != null && pushData.ContentDetails.Any())
                     {
                         DeleteUnnecessaryItems(pushData.ContentDetails, syncId);
+                        Console.WriteLine("Delete Ended");
                     }
 
                     var assetsFiles = pushData.ContentDetails.Select(i => i.Assets).ToList();
@@ -221,6 +224,7 @@ namespace KKIHub.ContentSync.Web.Controllers
             catch (Exception err)
             {
                 msg = $"{err.Message} at {err.StackTrace}";
+                Console.WriteLine(msg + $" at {jobName}");
 
             }
             return msg;
@@ -254,6 +258,7 @@ namespace KKIHub.ContentSync.Web.Controllers
             catch (Exception err)
             {
                 msg = $"{err.Message} at {err.StackTrace}";
+                Console.WriteLine(msg + " at Pull Assets");
             }
 
             return msg;

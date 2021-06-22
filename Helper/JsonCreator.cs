@@ -46,6 +46,8 @@ namespace KKIHub.ContentSync.Web.Helper
                 if (File.Exists(filePath))
                 {
                     File.Delete(filePath);
+                    var msg = $"Item with Id {item} deleted";
+                    Console.WriteLine(msg);
                 }
             }
             return true;
