@@ -1,0 +1,57 @@
+﻿@model KKIHub.ContentSync.Web.Models.SyncModel
+@{
+    ViewBag.Title = "Home Page";
+    var syncId = Guid.NewGuid().ToString();
+}
+
+<div class="jumbotron">
+    <h1>Content Sync Service</h1>
+    <p class="lead">Start your content sync between your Acoustic Hub.</p>
+</div>
+
+<div class="">
+    <div class="text-center main-sync-page">
+        <p>Start your content sync between your Acoustic Hub.</p>
+        <div class="content-pull-form">
+            <div class="field">
+                <label for="SourceHub" class="ff-label" id="source-hub">SourceHub</label>
+                <select name="source-hub-field" id="sourcehub-input" class="field-source-hub">
+                    @foreach (var hub in Model.HubInfo)
+                    {
+                        <option value="@hub.HubName">@hub.HubName</option>
+                    }
+                </select>
+            </div>
+            <div class="field">
+                <label for="TargetHub" class="ff-label" id="source-hub">TargetHub</label>
+                <select name="target-hub-field" id="targethub-input" class="field-target-hub">
+                    @foreach (var hub in Model.HubInfo)
+                    {
+                        <option value="@hub.HubName">@hub.HubName</option>
+                    }
+                </select>
+            </div>
+            <div class="field">
+                <label for="Days" class="ff-label" id="source-hub">No. of Days</label>
+                <input type="number" id="days-input" placeholder="" class="field-days" aria-placeholder="" name="days-field">
+            </div>
+
+            <div class="btnDiv">
+                <input type="button" class="sync-start" data-sync-id="@syncId" id="btnsubmit" value="Sync">
+            </div>
+        </div>
+        <div class="sync-result">
+        </div>
+        <div class="button-push hide">
+            <input type="button" class="push-sync" data-sync-id="@syncId" id="btnPush" value="Push Content">
+        </div>
+    </div>
+</div>
+
+<div class="overlay" style="display:none">
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</div>

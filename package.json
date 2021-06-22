@@ -1,0 +1,21 @@
+{
+  "name": "wchtools-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "gulp",
+    "pullasset": "gulp pullAssetJob",
+    "pushasset": "gulp pushAssetJob",
+    "pushcontent": "gulp pushContentJob"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-run": "^1.7.1",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "npm": "^7.18.1",
+    "wchtools-cli": "^4.5.6",
+    "yargs": "^17.0.1"
+  }
+}
