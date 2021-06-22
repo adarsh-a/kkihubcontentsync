@@ -64,7 +64,7 @@ namespace KKIHub.ContentSync.Web.Helper
             return true;
         }
 
-        private static void CheckFiles()
+        public static void CheckFiles()
         {
             var path = AppDomain.CurrentDomain.BaseDirectory;
             Console.WriteLine($"Path is {path}");
