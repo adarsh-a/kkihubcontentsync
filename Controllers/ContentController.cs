@@ -234,6 +234,32 @@ namespace KKIHub.ContentSync.Web.Controllers
         {
             //var path = HttpRuntime.AppDomainAppPath;
             var path = AppDomain.CurrentDomain.BaseDirectory;
+            Console.WriteLine($"Path is {path}");
+
+            try
+            {
+
+                var p2 = new Process
+                {
+                    StartInfo =
+                     {
+                         FileName = "cmd.exe",
+                         WorkingDirectory = path,
+                         Arguments = "docker ",
+                         UseShellExecute = false,
+                         RedirectStandardOutput = true,
+                         Verb= "runas"
+                    }
+                };
+                p2.Start();
+                string msg1 = p2.StandardOutput.ReadToEnd();
+            }
+            catch (Exception err)
+            {
+                string msg2 = $"{err.Message} {err.InnerException}  at {err.StackTrace}";
+                Console.WriteLine(msg2 + " at first command");
+            }
+
 
             string initCommand = $"/C npm run pullasset -- --path {assetPath}  --syncid {syncId} --hubid {sourceHub}";
             string msg = string.Empty;
